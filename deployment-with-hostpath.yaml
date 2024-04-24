@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: audit-app
-        image: registry.apps.k8s.ose-prod.solution.sbt/vlku/audit-app:0.4
+        image: <image>
         resources:
           limits:
             memory: "128Mi"
@@ -30,7 +30,7 @@ spec:
       tolerations:
         - effect: NoExecute
           operator: Exists
-      nodeName: master-03.k8s.r4c-test.solution.sbt
+      nodeName: master-03
        
   
 
