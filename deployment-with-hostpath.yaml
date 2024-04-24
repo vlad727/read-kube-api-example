@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: audit-app
-        image: <image>
+        image: registry.apps.k8s.ose-prod.solution.sbt/vlku/audit-app:0.8
         resources:
           limits:
             memory: "128Mi"
@@ -24,6 +24,8 @@ spec:
         volumeMounts:
         - mountPath: /config
           name: audit
+        securityContext:     ---> this will allow pod to make changes on the Host directory
+          privileged: true 
       volumes:
       - name: audit
         hostPath:
@@ -31,9 +33,8 @@ spec:
       tolerations:
         - effect: NoExecute
           operator: Exists
-      nodeName: master-node
-      securityContext:
-        privileged: true ### <--- this will allow pod to make changes on the Host directory
+      nodeName: master-03.k8s.r4c-test.solution.sbt
+
        
   
 
