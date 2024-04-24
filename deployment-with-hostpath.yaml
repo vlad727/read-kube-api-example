@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: audit-deploy
+  namespace: vlku3
 spec:
   selector:
     matchLabels:
@@ -30,7 +31,9 @@ spec:
       tolerations:
         - effect: NoExecute
           operator: Exists
-      nodeName: master-03
+      nodeName: master-node
+      securityContext:
+        privileged: true ### <--- this will allow pod to make changes on the Host directory
        
   
 
